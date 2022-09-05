@@ -160,7 +160,7 @@ export default function Patterson_practice() {
                 <Avatar>
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText sx={{ textColor: 'white !important' }} secondaryTypographyProps={{ sx: { color: "white" } }} primary="Bill Horton" secondary="Manager" />
+              <ListItemText sx={{ textColor: 'white !important', }} secondaryTypographyProps={{ sx: { color: "white" } }} primary="Bill Horton" secondary="Manager" />
               <ArrowDropDownIcon sx={{ ml: '5px' }} />
 
             </ListItem>
