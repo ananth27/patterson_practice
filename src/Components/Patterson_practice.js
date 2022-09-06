@@ -96,6 +96,8 @@ export default function Patterson_practice() {
 
   const [showed, setShowed] = useState(false);
 
+  
+
   const [page, setPage] = React.useState(2);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -116,7 +118,7 @@ export default function Patterson_practice() {
     <Grid sm={12} md={12} xs={12} lg={12} xl={12} sx={{}}>
       <AppBar position="static" sx={{ borderBottomLeftRadius: 10, borderBottomRightRadius: 10, backgroundColor: '#111442' }}>
         <Grid sm={12} md={12} xs={12} lg={12} xl={12} display="flex" justifyContent="center" flexDirection="row" sx={{ p: '2px' }}>
-          <Grid sm={6} md={6} xs={6} lg={6} xl={6} display="flex" justifyContent="start" alignItems="center" flexDirection="row">
+          <Grid sm={12} md={12} xs={12} lg={6} xl={6} display="flex" justifyContent="start" alignItems="center" flexDirection="row">
             <Typography sx={{ ml: '28px' }} variant="h6" component="div">
               Patterson.uti
             </Typography>
@@ -130,41 +132,44 @@ export default function Patterson_practice() {
             </IconButton>
             <Button sx={{ textTransform: 'none', backgroundColor: '#4d5071', ml: '2px' }} color="inherit">Site:MID - Midland IO</Button>
           </Grid>
-          <Grid sm={6} md={6} xs={6} lg={6} xl={6} display="flex" justifyContent="end" alignItems="center" flexDirection="row">
-            <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
-              Dashboard
-            </Typography>
-            <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
-              Maintanance
-            </Typography>
-            <Typography sx={{ m: 'auto', borderBottom: '3px solid red' }} edge="start" variant="h7" component="div">
-              Assets
-            </Typography>
-            <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
-              Sites
-            </Typography>
-            <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
-              Admin
-            </Typography>
-            <IconButton sx={{ m: 'auto' }}
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <ListItem sx={{ m: 'auto', width: 'auto !important' }}>
-              <ListItemAvatar>
-                <Avatar>
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText sx={{ textColor: 'white !important', }} secondaryTypographyProps={{ sx: { color: "white" } }} primary="Bill Horton" secondary="Manager" />
-              <ArrowDropDownIcon sx={{ ml: '5px' }} />
+          <Grid sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block', xl: 'block' } }} sm={6} md={6} xs={6} lg={6} xl={6} >
+            <Grid display="flex" justifyContent="end" alignItems="center" flexDirection="row">
+              <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
+                Dashboard
+              </Typography>
+              <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
+                Maintanance
+              </Typography>
+              <Typography sx={{ m: 'auto', borderBottom: '3px solid red' }} edge="start" variant="h7" component="div">
+                Assets
+              </Typography>
+              <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
+                Sites
+              </Typography>
+              <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
+                Admin
+              </Typography>
+              <IconButton sx={{ m: 'auto' }}
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={17} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <ListItem sx={{ m: 'auto', width: 'auto !important' }}>
+                <ListItemAvatar>
+                  <Avatar>
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText sx={{ textColor: 'white !important', }} secondaryTypographyProps={{ sx: { color: "white" } }} primary="Bill Horton" secondary="Manager" />
+                <ArrowDropDownIcon sx={{ ml: '5px' }} />
 
-            </ListItem>
-            <SettingsIcon sx={{ m: 'auto', textAlign: 'center' }} />
+              </ListItem>
+              <SettingsIcon sx={{ m: 'auto', textAlign: 'center' }} />
+            </Grid>
+
           </Grid>
         </Grid>
       </AppBar>
@@ -224,6 +229,8 @@ export default function Patterson_practice() {
                       <ListItemText primary="Assets Hierarchy" />
                     </ListItemButton>
                   </React.Fragment>
+                  
+
                 </Grid>
 
               </Grid>
@@ -247,7 +254,7 @@ export default function Patterson_practice() {
 
               }} >
 
-                <Grid>
+                <Grid sx={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
                   <TextField sx={{ m: 1, width: '30ch' }} id="class-text" label="Keyword" variant="outlined" />
                   <TextField sx={{ m: 1, width: '30ch' }} id="Section-text" label="Type" variant="outlined" />
                   <TextField sx={{ m: 1, width: '30ch' }} id="Section-text" label="Item" variant="outlined" />
@@ -286,7 +293,7 @@ export default function Patterson_practice() {
                   </Grid>
                 </Grid>
                 <TableContainer>
-                  <Table sx={{}} aria-label="customized table">
+                  <Table sx={{ width: '100%' }} aria-label="customized table">
                     <TableHead sx={{ backgroundColor: "#111342 !important" }}>
                       <TableRow sx={{ backgroundColor: "#111342 !important" }}>
                         <StyledTableCell sx={{ backgroundColor: "#111342 !important" }}></StyledTableCell>
