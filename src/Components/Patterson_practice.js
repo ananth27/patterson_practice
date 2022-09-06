@@ -43,8 +43,7 @@ import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
-import { SidebarComponent } from '@syncfusion/ej2-react-navigations';
+import { useState } from 'react';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -95,38 +94,7 @@ const rows = [
 
 export default function Patterson_practice() {
 
-  constructor(props){
-    super(props);
-    this.closeClick = this.closeClick.bind(this);
-    this.openClick = this.openClick.bind(this);
-    this.toggleClick = this.toggleClick.bind(this);
-    this.onCreate = this.onCreate.bind(this);
-  }
-    
-  
-  onCreate() {
-    this.sidebarObj.element.style.visibility = '';
-  }
-  open() {
-    console.log("Sidebar is opened");
-  }
-  close() {
-    console.log("Sidebar is closed");
-  }
-  // Open the Sidebar
-  openClick() {
-    this.sidebarObj.show();
-  }
-  // Toggle(Open/Close) the Sidebar
-  toggleClick() {
-    this.sidebarObj.toggle();
-  }
-  // Close the Sidebar
-  closeClick() {
-    this.sidebarObj.hide();
-  }
-
-
+  const [showed, setShowed] = useState(false);
 
   const [page, setPage] = React.useState(2);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -152,7 +120,7 @@ export default function Patterson_practice() {
             <Typography sx={{ ml: '28px' }} variant="h6" component="div">
               Patterson.uti
             </Typography>
-            <IconButton onClick={this.closeClick} id="close"
+            <IconButton onClick={() => setShowed(!showed)}
               sx={{ ml: '2px' }}
               size="large"
               color="inherit"
@@ -205,7 +173,7 @@ export default function Patterson_practice() {
 
       }} >
         <Grid sm={12} md={12} xs={12} lg={12} xl={12} container sx={{ p: '10px' }} display="flex" justifyContent="center" flexDirection="row">
-          <Grid id="default-sidebar" ref={Sidebar => this.sidebarObj = Sidebar} style={{ visibility: "hidden" }} close={this.close} open={this.open} created={this.onCreate} container sm={12} md={12} xs={12} lg={3} xl={3} display="flex" justifyContent="center" flexDirection="column" alignContent="center" alignItems="center">
+          <Grid style={{ display: showed ? "none" : "" }} container sm={12} md={12} xs={12} lg={3} xl={3} display="flex" justifyContent="center" flexDirection="column" alignContent="center" alignItems="center">
             <Grid container sm={12} md={12} xs={12} lg={12} xl={12} sx={{}}>
               <Grid container sm={12} md={12} xs={12} lg={12} xl={12} display="flex" justifyContent="center" flexDirection="column" alignContent="center" alignItems="center" sx={{
                 backgroundColor: 'white',
