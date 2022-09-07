@@ -43,6 +43,8 @@ import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+
 import { useState } from 'react';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -72,6 +74,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+
 function createData(
   name: string,
   asset: string,
@@ -94,9 +97,13 @@ const rows = [
 
 export default function Patterson_practice() {
 
+  //for side bar
   const [showed, setShowed] = useState(false);
 
-  
+  //for buttons border color change header menu
+  const [index, setIndex] = useState(0);
+
+
 
   const [page, setPage] = React.useState(2);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -140,7 +147,7 @@ export default function Patterson_practice() {
               <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
                 Maintanance
               </Typography>
-              <Typography sx={{ m: 'auto', borderBottom: '3px solid red' }} edge="start" variant="h7" component="div">
+              <Typography onClick={() => setIndex(1)} sx={{ m: 'auto', borderBottom: '3px solid red' }} edge="start" variant="h7" component="div">
                 Assets
               </Typography>
               <Typography sx={{ m: 'auto' }} edge="start" variant="h7" component="div">
@@ -178,7 +185,7 @@ export default function Patterson_practice() {
 
       }} >
         <Grid sm={12} md={12} xs={12} lg={12} xl={12} container sx={{ p: '10px' }} display="flex" justifyContent="center" flexDirection="row">
-          <Grid style={{ display: showed ? "none" : "" }} container sm={12} md={12} xs={12} lg={3} xl={3} display="flex" justifyContent="center" flexDirection="column" alignContent="center" alignItems="center">
+          <Grid container style={{ display: showed ? "none" : "" }} sm={12} md={12} xs={12} xl={3} lg={3} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex', xl: 'flex' } }} display="flex" justifyContent="center" flexDirection="column" alignContent="center" alignItems="center">
             <Grid container sm={12} md={12} xs={12} lg={12} xl={12} sx={{}}>
               <Grid container sm={12} md={12} xs={12} lg={12} xl={12} display="flex" justifyContent="center" flexDirection="column" alignContent="center" alignItems="center" sx={{
                 backgroundColor: 'white',
@@ -229,13 +236,119 @@ export default function Patterson_practice() {
                       <ListItemText primary="Assets Hierarchy" />
                     </ListItemButton>
                   </React.Fragment>
-                  
+
 
                 </Grid>
 
               </Grid>
             </Grid>
 
+          </Grid>
+          <Grid container style={{ display: showed ? "none" : "" }} sx={{ display: { xs: 'block', sm: 'block', md: 'block', lg: 'none', xl: 'none' }, width: '370px', height: '100%', position: 'fixed', verticalAlign: 'left', backgroundColor: 'white', zIndex: '2', left: '0px', top: '55px', padding: '20px', }}>
+            <Grid sm={12} md={12} xs={12} lg={12} xl={12} sx={{ mt: '15px', width: '95%', background: 'white' }}>
+              <React.Fragment sx={{ backgroundColor: 'white' }}>
+                <ListItemButton sx={{ backgroundColor: "#063ead !important", borderRadius: "4px" }}>
+                  <ListItemIcon sx={{ color: 'white !important' }}>
+                    <StorageIcon />
+                  </ListItemIcon>
+                  <ListItemText sx={{ color: 'white' }} primary="Assets" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon >
+                    <OpenInNewIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Pending & Failed Exports" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <StorageIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Planned Asset Inventory" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <StorageIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Asset Transfers" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <StorageIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Planned Inventory Report" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <LocationOnIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Third Party Physical Location" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <LanIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Assets Hierarchy" />
+                </ListItemButton>
+              </React.Fragment>
+              <React.Fragment sx={{ backgroundColor: 'white' }}>
+                <ListItemButton sx={{ backgroundColor: "#063ead !important", borderRadius: "4px", mt: '50px' }}>
+                  <ListItemIcon sx={{ color: 'white !important' }}>
+                    <OpenInNewIcon />
+                  </ListItemIcon>
+                  <ListItemText sx={{ color: 'white' }} primary="Dashboard" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon >
+                    <OpenInNewIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Maintanance" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <OpenInNewIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Assets" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <OpenInNewIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Sites" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <OpenInNewIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Admin" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon
+                    size="large"
+                    aria-label="show 17 new notifications"
+                    color="inherit"
+                  >
+                    <Badge badgeContent={17} color="error">
+                      <NotificationsIcon />
+                    </Badge>
+                  </ListItemIcon>
+                  <ListItemText primary="Notifications" />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemAvatar>
+                    <Avatar>
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText sx={{ textColor: 'black !important', }} primary="Bill Horton" secondary="Manager" />
+                  <ArrowDropDownIcon />
+                </ListItemButton>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <SettingsIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Settings" />
+                </ListItemButton>
+              </React.Fragment>
+            </Grid>
           </Grid>
           <Grid sm={12} md={12} xs={12} lg={9} xl={9} sx={{ pl: '10px' }} display="flex" justifyContent="center" flexDirection="column" alignContent="center" alignItems="center">
             <Grid sx={{ borderRadius: '10px' }} sm={12} md={12} xs={12} lg={12} xl={12} display="flex" justifyContent="center" flexDirection="column">
@@ -276,7 +389,7 @@ export default function Patterson_practice() {
               </Grid>
             </Grid>
             <Grid container sx={{ mt: 1 }} item sm={12} md={12} xs={12} lg={12} xl={12} rowSpacing={2} display="flex" justifyContent="center" flexDirection="column">
-              <Item sx={{ borderRadius: '10px', backgroundColor: 'white' }} display="flex" justifyContent="center" flexDirection="column" >
+              <Item sx={{ borderRadius: '10px', backgroundColor: 'white', overflow: 'none' }} display="flex" justifyContent="center" flexDirection="column" >
                 <Grid height="50px" sx={{ mb: '8px' }} sm={12} md={12} xs={12} lg={12} xl={12} display="flex" justifyContent="center" flexDirection="row">
                   <Grid padding="5px" sm={6} md={6} xs={6} lg={6} xl={6} display="flex" justifyContent="start" flexDirection="row">
                     <Button variant="contained">Export to Excel</Button>
@@ -292,161 +405,164 @@ export default function Patterson_practice() {
                     />
                   </Grid>
                 </Grid>
-                <TableContainer>
-                  <Table sx={{ width: '100%' }} aria-label="customized table">
-                    <TableHead sx={{ backgroundColor: "#111342 !important" }}>
-                      <TableRow sx={{ backgroundColor: "#111342 !important" }}>
-                        <StyledTableCell sx={{ backgroundColor: "#111342 !important" }}></StyledTableCell>
-                        <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Asset</StyledTableCell>
-                        <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Type</StyledTableCell>
-                        <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Discription</StyledTableCell>
-                        <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Parent</StyledTableCell>
-                        <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Location</StyledTableCell>
-                        <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Category</StyledTableCell>
-                        <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Serial</StyledTableCell>
-                        <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">RFID</StyledTableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                          <StyledTableCell component="th" scope="row">
-                            <DescriptionIcon />
-                          </StyledTableCell>
-                          <StyledTableCell align="right">{row.asset}</StyledTableCell>
-                          <StyledTableCell align="right">{row.type}</StyledTableCell>
-                          <StyledTableCell align="right">{row.description}</StyledTableCell>
-                          <StyledTableCell align="right">{row.parent}</StyledTableCell>
-                          <StyledTableCell align="right">{row.location}</StyledTableCell>
-                          <StyledTableCell align="right">{row.category}</StyledTableCell>
-                          <StyledTableCell align="right">{row.serial}</StyledTableCell>
-                          <StyledTableCell align="right">{row.rfid}</StyledTableCell>
-                        </StyledTableRow>
-                      ))}
-                      {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                          <StyledTableCell component="th" scope="row">
-                            <DescriptionIcon />
-                          </StyledTableCell>
-                          <StyledTableCell align="right">{row.asset}</StyledTableCell>
-                          <StyledTableCell align="right">{row.type}</StyledTableCell>
-                          <StyledTableCell align="right">{row.description}</StyledTableCell>
-                          <StyledTableCell align="right">{row.parent}</StyledTableCell>
-                          <StyledTableCell align="right">{row.location}</StyledTableCell>
-                          <StyledTableCell align="right">{row.category}</StyledTableCell>
-                          <StyledTableCell align="right">{row.serial}</StyledTableCell>
-                          <StyledTableCell align="right">{row.rfid}</StyledTableCell>
-                        </StyledTableRow>
-                      ))}
-                      {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                          <StyledTableCell component="th" scope="row">
-                            <DescriptionIcon />
-                          </StyledTableCell>
-                          <StyledTableCell align="right">{row.asset}</StyledTableCell>
-                          <StyledTableCell align="right">{row.type}</StyledTableCell>
-                          <StyledTableCell align="right">{row.description}</StyledTableCell>
-                          <StyledTableCell align="right">{row.parent}</StyledTableCell>
-                          <StyledTableCell align="right">{row.location}</StyledTableCell>
-                          <StyledTableCell align="right">{row.category}</StyledTableCell>
-                          <StyledTableCell align="right">{row.serial}</StyledTableCell>
-                          <StyledTableCell align="right">{row.rfid}</StyledTableCell>
-                        </StyledTableRow>
-                      ))}
-                      {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                          <StyledTableCell component="th" scope="row">
-                            <DescriptionIcon />
-                          </StyledTableCell>
-                          <StyledTableCell align="right">{row.asset}</StyledTableCell>
-                          <StyledTableCell align="right">{row.type}</StyledTableCell>
-                          <StyledTableCell align="right">{row.description}</StyledTableCell>
-                          <StyledTableCell align="right">{row.parent}</StyledTableCell>
-                          <StyledTableCell align="right">{row.location}</StyledTableCell>
-                          <StyledTableCell align="right">{row.category}</StyledTableCell>
-                          <StyledTableCell align="right">{row.serial}</StyledTableCell>
-                          <StyledTableCell align="right">{row.rfid}</StyledTableCell>
-                        </StyledTableRow>
-                      ))}
-                      {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                          <StyledTableCell component="th" scope="row">
-                            <DescriptionIcon />
-                          </StyledTableCell>
-                          <StyledTableCell align="right">{row.asset}</StyledTableCell>
-                          <StyledTableCell align="right">{row.type}</StyledTableCell>
-                          <StyledTableCell align="right">{row.description}</StyledTableCell>
-                          <StyledTableCell align="right">{row.parent}</StyledTableCell>
-                          <StyledTableCell align="right">{row.location}</StyledTableCell>
-                          <StyledTableCell align="right">{row.category}</StyledTableCell>
-                          <StyledTableCell align="right">{row.serial}</StyledTableCell>
-                          <StyledTableCell align="right">{row.rfid}</StyledTableCell>
-                        </StyledTableRow>
-                      ))}
-                      {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                          <StyledTableCell component="th" scope="row">
-                            <DescriptionIcon />
-                          </StyledTableCell>
-                          <StyledTableCell align="right">{row.asset}</StyledTableCell>
-                          <StyledTableCell align="right">{row.type}</StyledTableCell>
-                          <StyledTableCell align="right">{row.description}</StyledTableCell>
-                          <StyledTableCell align="right">{row.parent}</StyledTableCell>
-                          <StyledTableCell align="right">{row.location}</StyledTableCell>
-                          <StyledTableCell align="right">{row.category}</StyledTableCell>
-                          <StyledTableCell align="right">{row.serial}</StyledTableCell>
-                          <StyledTableCell align="right">{row.rfid}</StyledTableCell>
-                        </StyledTableRow>
-                      ))}
-                      {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                          <StyledTableCell component="th" scope="row">
-                            <DescriptionIcon />
-                          </StyledTableCell>
-                          <StyledTableCell align="right">{row.asset}</StyledTableCell>
-                          <StyledTableCell align="right">{row.type}</StyledTableCell>
-                          <StyledTableCell align="right">{row.description}</StyledTableCell>
-                          <StyledTableCell align="right">{row.parent}</StyledTableCell>
-                          <StyledTableCell align="right">{row.location}</StyledTableCell>
-                          <StyledTableCell align="right">{row.category}</StyledTableCell>
-                          <StyledTableCell align="right">{row.serial}</StyledTableCell>
-                          <StyledTableCell align="right">{row.rfid}</StyledTableCell>
-                        </StyledTableRow>
-                      ))}
-                      {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                          <StyledTableCell component="th" scope="row">
-                            <DescriptionIcon />
-                          </StyledTableCell>
-                          <StyledTableCell align="right">{row.asset}</StyledTableCell>
-                          <StyledTableCell align="right">{row.type}</StyledTableCell>
-                          <StyledTableCell align="right">{row.description}</StyledTableCell>
-                          <StyledTableCell align="right">{row.parent}</StyledTableCell>
-                          <StyledTableCell align="right">{row.location}</StyledTableCell>
-                          <StyledTableCell align="right">{row.category}</StyledTableCell>
-                          <StyledTableCell align="right">{row.serial}</StyledTableCell>
-                          <StyledTableCell align="right">{row.rfid}</StyledTableCell>
-                        </StyledTableRow>
-                      ))}
-                      {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                          <StyledTableCell component="th" scope="row">
-                            <DescriptionIcon />
-                          </StyledTableCell>
-                          <StyledTableCell align="right">{row.asset}</StyledTableCell>
-                          <StyledTableCell align="right">{row.type}</StyledTableCell>
-                          <StyledTableCell align="right">{row.description}</StyledTableCell>
-                          <StyledTableCell align="right">{row.parent}</StyledTableCell>
-                          <StyledTableCell align="right">{row.location}</StyledTableCell>
-                          <StyledTableCell align="right">{row.category}</StyledTableCell>
-                          <StyledTableCell align="right">{row.serial}</StyledTableCell>
-                          <StyledTableCell align="right">{row.rfid}</StyledTableCell>
-                        </StyledTableRow>
-                      ))}
+                <Box component="div" sx={{ overflow: 'auto' }}>
+                  <TableContainer>
+                    <Table sx={{ width: '250px' }} aria-label="customized table">
+                      <TableHead sx={{ backgroundColor: "#111342 !important" }}>
+                        <TableRow sx={{ backgroundColor: "#111342 !important" }}>
+                          <StyledTableCell sx={{ backgroundColor: "#111342 !important" }}></StyledTableCell>
+                          <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Asset</StyledTableCell>
+                          <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Type</StyledTableCell>
+                          <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Discription</StyledTableCell>
+                          <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Parent</StyledTableCell>
+                          <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Location</StyledTableCell>
+                          <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Category</StyledTableCell>
+                          <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">Serial</StyledTableCell>
+                          <StyledTableCell sx={{ backgroundColor: "#111342 !important" }} align="right">RFID</StyledTableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {rows.map((row) => (
+                          <StyledTableRow key={row.name}>
+                            <StyledTableCell component="th" scope="row">
+                              <DescriptionIcon />
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{row.asset}</StyledTableCell>
+                            <StyledTableCell align="right">{row.type}</StyledTableCell>
+                            <StyledTableCell align="right">{row.description}</StyledTableCell>
+                            <StyledTableCell align="right">{row.parent}</StyledTableCell>
+                            <StyledTableCell align="right">{row.location}</StyledTableCell>
+                            <StyledTableCell align="right">{row.category}</StyledTableCell>
+                            <StyledTableCell align="right">{row.serial}</StyledTableCell>
+                            <StyledTableCell align="right">{row.rfid}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                        {rows.map((row) => (
+                          <StyledTableRow key={row.name}>
+                            <StyledTableCell component="th" scope="row">
+                              <DescriptionIcon />
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{row.asset}</StyledTableCell>
+                            <StyledTableCell align="right">{row.type}</StyledTableCell>
+                            <StyledTableCell align="right">{row.description}</StyledTableCell>
+                            <StyledTableCell align="right">{row.parent}</StyledTableCell>
+                            <StyledTableCell align="right">{row.location}</StyledTableCell>
+                            <StyledTableCell align="right">{row.category}</StyledTableCell>
+                            <StyledTableCell align="right">{row.serial}</StyledTableCell>
+                            <StyledTableCell align="right">{row.rfid}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                        {rows.map((row) => (
+                          <StyledTableRow key={row.name}>
+                            <StyledTableCell component="th" scope="row">
+                              <DescriptionIcon />
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{row.asset}</StyledTableCell>
+                            <StyledTableCell align="right">{row.type}</StyledTableCell>
+                            <StyledTableCell align="right">{row.description}</StyledTableCell>
+                            <StyledTableCell align="right">{row.parent}</StyledTableCell>
+                            <StyledTableCell align="right">{row.location}</StyledTableCell>
+                            <StyledTableCell align="right">{row.category}</StyledTableCell>
+                            <StyledTableCell align="right">{row.serial}</StyledTableCell>
+                            <StyledTableCell align="right">{row.rfid}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                        {rows.map((row) => (
+                          <StyledTableRow key={row.name}>
+                            <StyledTableCell component="th" scope="row">
+                              <DescriptionIcon />
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{row.asset}</StyledTableCell>
+                            <StyledTableCell align="right">{row.type}</StyledTableCell>
+                            <StyledTableCell align="right">{row.description}</StyledTableCell>
+                            <StyledTableCell align="right">{row.parent}</StyledTableCell>
+                            <StyledTableCell align="right">{row.location}</StyledTableCell>
+                            <StyledTableCell align="right">{row.category}</StyledTableCell>
+                            <StyledTableCell align="right">{row.serial}</StyledTableCell>
+                            <StyledTableCell align="right">{row.rfid}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                        {rows.map((row) => (
+                          <StyledTableRow key={row.name}>
+                            <StyledTableCell component="th" scope="row">
+                              <DescriptionIcon />
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{row.asset}</StyledTableCell>
+                            <StyledTableCell align="right">{row.type}</StyledTableCell>
+                            <StyledTableCell align="right">{row.description}</StyledTableCell>
+                            <StyledTableCell align="right">{row.parent}</StyledTableCell>
+                            <StyledTableCell align="right">{row.location}</StyledTableCell>
+                            <StyledTableCell align="right">{row.category}</StyledTableCell>
+                            <StyledTableCell align="right">{row.serial}</StyledTableCell>
+                            <StyledTableCell align="right">{row.rfid}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                        {rows.map((row) => (
+                          <StyledTableRow key={row.name}>
+                            <StyledTableCell component="th" scope="row">
+                              <DescriptionIcon />
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{row.asset}</StyledTableCell>
+                            <StyledTableCell align="right">{row.type}</StyledTableCell>
+                            <StyledTableCell align="right">{row.description}</StyledTableCell>
+                            <StyledTableCell align="right">{row.parent}</StyledTableCell>
+                            <StyledTableCell align="right">{row.location}</StyledTableCell>
+                            <StyledTableCell align="right">{row.category}</StyledTableCell>
+                            <StyledTableCell align="right">{row.serial}</StyledTableCell>
+                            <StyledTableCell align="right">{row.rfid}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                        {rows.map((row) => (
+                          <StyledTableRow key={row.name}>
+                            <StyledTableCell component="th" scope="row">
+                              <DescriptionIcon />
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{row.asset}</StyledTableCell>
+                            <StyledTableCell align="right">{row.type}</StyledTableCell>
+                            <StyledTableCell align="right">{row.description}</StyledTableCell>
+                            <StyledTableCell align="right">{row.parent}</StyledTableCell>
+                            <StyledTableCell align="right">{row.location}</StyledTableCell>
+                            <StyledTableCell align="right">{row.category}</StyledTableCell>
+                            <StyledTableCell align="right">{row.serial}</StyledTableCell>
+                            <StyledTableCell align="right">{row.rfid}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                        {rows.map((row) => (
+                          <StyledTableRow key={row.name}>
+                            <StyledTableCell component="th" scope="row">
+                              <DescriptionIcon />
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{row.asset}</StyledTableCell>
+                            <StyledTableCell align="right">{row.type}</StyledTableCell>
+                            <StyledTableCell align="right">{row.description}</StyledTableCell>
+                            <StyledTableCell align="right">{row.parent}</StyledTableCell>
+                            <StyledTableCell align="right">{row.location}</StyledTableCell>
+                            <StyledTableCell align="right">{row.category}</StyledTableCell>
+                            <StyledTableCell align="right">{row.serial}</StyledTableCell>
+                            <StyledTableCell align="right">{row.rfid}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                        {rows.map((row) => (
+                          <StyledTableRow key={row.name}>
+                            <StyledTableCell component="th" scope="row">
+                              <DescriptionIcon />
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{row.asset}</StyledTableCell>
+                            <StyledTableCell align="right">{row.type}</StyledTableCell>
+                            <StyledTableCell align="right">{row.description}</StyledTableCell>
+                            <StyledTableCell align="right">{row.parent}</StyledTableCell>
+                            <StyledTableCell align="right">{row.location}</StyledTableCell>
+                            <StyledTableCell align="right">{row.category}</StyledTableCell>
+                            <StyledTableCell align="right">{row.serial}</StyledTableCell>
+                            <StyledTableCell align="right">{row.rfid}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
 
-                    </TableBody>
-                  </Table>
-                </TableContainer>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Box>
+
               </Item>
             </Grid>
           </Grid>
